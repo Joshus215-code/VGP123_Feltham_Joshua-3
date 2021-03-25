@@ -251,6 +251,7 @@ MonoBehaviour:
   facingRight: 1
   isCrouching: 0
   health: 4
+  jumpSFX: {fileID: 8300000, guid: 2ab3f9b733b431c4eb5b66941e804af4, type: 3}
 --- !u!95 &364996578
 Animator:
   serializedVersion: 3
@@ -286,6 +287,7 @@ MonoBehaviour:
   spawnPointStanding: {fileID: 1444070916}
   projectileSpeed: 0
   projectilePrefab: {fileID: -8951465178052596512, guid: cf5b75d4ce18ff445a4dab1c85b3694f, type: 3}
+  fireSFX: {fileID: 8300000, guid: 0127347a59a6a3b4c8150dbe45ea87dd, type: 3}
 --- !u!114 &1157991940
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,11 +31,22 @@ public class CanvasManager : MonoBehaviour
     [Header("Slider")]
     public Slider volSlider;
 
+    AudioSource pauseAudio;
+    public AudioClip pauseSound;
+
     [Header("Toggle")]
     public Toggle muteToggle;
     
     void Start()
     {
+
+        if (pauseMenu)
+        {
+           pauseAudio = gameObject.AddComponent<AudioSource>();
+            pauseAudio.clip = pauseSound;
+            pauseAudio.loop = false;
+           
+        }
 
         if (startButton)
         {
@@ -78,6 +89,11 @@ public class CanvasManager : MonoBehaviour
             {
 
                 pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+                if(pauseMenu.activeSelf)
+                {
+                    pauseAudio.Play();
+                }
                 GameManager.instance.playerInstance.GetComponent<playermovement>().enabled = false;
                 GameManager.instance.playerInstance.GetComponent<playerFire>().enabled = false;
                 Time.timeScale = 0f;           

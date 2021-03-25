@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
             Vector3 cameraTransform;
                 cameraTransform = transform.position;
             cameraTransform.x = player.transform.position.x - 0.5f;
-            cameraTransform.x = Mathf.Clamp(cameraTransform.x, 2.3f, 64.85f);
+            cameraTransform.x = Mathf.Clamp(cameraTransform.x, 0.55f, 64.85f);
             transform.position = cameraTransform;
         }
     }

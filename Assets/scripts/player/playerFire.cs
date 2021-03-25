@@ -9,6 +9,7 @@ public class playerFire : MonoBehaviour
 
     SpriteRenderer batman;
     playermovement movement;
+    AudioSource fireAudioSource;
     
 
     public Transform spawnPointCrouch;
@@ -17,6 +18,7 @@ public class playerFire : MonoBehaviour
     public float projectileSpeed;
     public projectile projectilePrefab;
 
+    public AudioClip fireSFX;
 
 
 
@@ -25,6 +27,7 @@ public class playerFire : MonoBehaviour
     {
         movement = GetComponent<playermovement>();
         batman = GetComponent<SpriteRenderer>();
+       
 
         if (projectileSpeed <= 0)
         {
@@ -44,12 +47,23 @@ public class playerFire : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
-            FireProjectile();
-
-        else
         {
-
+            FireProjectile();
+            if (!fireAudioSource)
+            {
+                fireAudioSource = gameObject.AddComponent<AudioSource>();
+                fireAudioSource.clip = fireSFX;
+                fireAudioSource.loop = false;
+                fireAudioSource.Play();
+            }
+            else
+            {
+                fireAudioSource.Play();
+            }
+              
+            
         }
+       
     }
 
     void FireProjectile()

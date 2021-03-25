@@ -9,6 +9,7 @@ public class playermovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
+    AudioSource jumpAudioSource;
 
 
     public float speed;
@@ -27,6 +28,9 @@ public class playermovement : MonoBehaviour
     bool crouchShooting = false;
     public int health;
 
+    public AudioClip jumpSFX;
+    
+
       
 
    
@@ -38,6 +42,8 @@ public class playermovement : MonoBehaviour
         Debug.Log(rb);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+      
 
       
 
@@ -166,6 +172,17 @@ public class playermovement : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             rb.AddForce(Vector2.up * jumpForce);
+            if (!jumpAudioSource)
+            {
+                jumpAudioSource = gameObject.AddComponent<AudioSource>();
+                jumpAudioSource.clip = jumpSFX;
+                jumpAudioSource.loop = false;
+                jumpAudioSource.Play();
+            }
+            else
+            {
+                jumpAudioSource.Play();
+            }
         }
 
         if (isCrouching)
